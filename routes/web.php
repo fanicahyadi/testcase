@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// CRUD
+Route::resource('items', 'ItemController');
+Route::resource('categories', 'CategoryController');
+Route::resource('rooms', 'RoomController');
+Route::resource('roles', 'RoleController');
+Route::resource('permissions', 'PermissionController');
+Route::resource('staffs', 'StaffController');
