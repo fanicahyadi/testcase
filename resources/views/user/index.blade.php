@@ -15,23 +15,25 @@
         @endif
         <table class="table table-striped">
 
-            <a href="{{ route('categories.create') }}" class="btn btn-primary"><i class="fas fa-plus mr-1"></i>Add Data</a> &nbsp;&nbsp;
+            <a href="{{ route('users.create') }}" class="btn btn-primary"><i class="fas fa-plus mr-1"></i>Add Data</a> &nbsp;&nbsp;
 
             <thead>
                 <tr>
                     <td>ID</td>
                     <td>Name</td>
+                    <td>Email</td>
                     <td colspan="2">Action</td>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $category)
+                @foreach ($users as $user)
                     <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->name }}</td>
-                        <td><a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary">Edit</a></td>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Edit</a></td>
                         <td>
-                            <form action="{{ route('categories.destroy', $category->id) }}" method="post">
+                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">Delete</button>

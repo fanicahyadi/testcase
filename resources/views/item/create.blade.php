@@ -31,6 +31,10 @@
               <textarea rows="5" columns="5" class="form-control" name="category"></textarea>
           </div>
           <div class="form-group">
+            <label for="room">Rooms :</label>
+            <textarea rows="5" columns="5" class="form-control" name="room"></textarea>
+        </div>
+          <div class="form-group">
               <label for="quantity">Quantity :</label>
               <input type="number" class="form-control" name="quantity"/>
           </div>

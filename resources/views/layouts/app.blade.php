@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="app">
@@ -33,12 +34,34 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/staffs">Staff</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/home">Home</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                              <a class="nav-link" href="/items">Item</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/categories">Category</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/rooms">Rooms</a>
+                            </li>
+
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

@@ -15,10 +15,13 @@
         @endif
         <div>
             <table class="table table-striped">
+
+                <a href="{{ route('rooms.create') }}" class="btn btn-primary"><i class="fas fa-plus mr-1"></i>Add Data</a> &nbsp;&nbsp;
+    
                 <thead>
                     <tr>
                         <td>ID</td>
-                        <td>Name</td>>
+                        <td>Name</td>
                         <td>Description</td>
                         <td colspan="2">Action</td>
                     </tr>

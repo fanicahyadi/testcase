@@ -15,6 +15,8 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table-> bigInteger('category_id');
+            $table-> bigInteger('room_id');
             $table->string('name');
             $table->string('category');
             $table->string('quantity');

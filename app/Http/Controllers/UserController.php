@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Item;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ItemController extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,9 +25,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::with('room')->get();
+        $users = User::all();
 
-        return view('item.index', compact('items'));
+        return view('user.index', compact('users'));
     }
 
 
@@ -38,7 +38,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('item.create');
+        return view('user.create');
     }
 
     /**
@@ -51,13 +51,11 @@ class ItemController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'category' => 'required',
-            'quantity' => 'required|numeric',
-            'price' => 'required|numeric',
+            'email' => 'required',
         ]);
-        $show = Item::create($validatedData);
+        $show = User::create($validatedData);
 
-        return redirect('/items')->with('success', 'Items is successfully saved');
+        return redirect('/user')->with('success', 'Users is successfully saved');
     }
 
     /**
@@ -79,9 +77,9 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        $items = Item::findOrFail($id);
+        $users = User::findOrFail($id);
 
-        return view('item.edit', compact('items'));
+        return view('user.edit', compact('users'));
     }
 
     /**
@@ -94,14 +92,11 @@ class ItemController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'category' => 'required',
-            'quantity' => 'required|numeric',
-            'price' => 'required|numeric',
+            'name' => 'required|max:255'
         ]);
-        Item::whereId($id)->update($validatedData);
+        User::whereId($id)->update($validatedData);
 
-        return redirect('/items')->with('success', 'Item Data is successfully updated');
+        return redirect('/user')->with('success', 'User Data is successfully updated');
     }
 
     /**
@@ -112,9 +107,10 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        $items = Item::findOrFail($id);
-        $items->delete();
+        $users = User::findOrFail($id);
+        $users->delete();
 
-        return redirect('/items')->with('success', 'Item Data is successfully deleted');
+        return redirect('/user')->with('success', 'User Data is successfully deleted');
     }
+
 }
