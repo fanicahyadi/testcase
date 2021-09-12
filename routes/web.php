@@ -26,6 +26,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', function(){
+    return 'Dashboaard';
+})->name('dashboard');
 Route::get('/users', 'UserController@index')->name('users');
 Route::get('/users/create', 'UserController@create')->name('users.create');
 Route::get('/users/store', 'UserController@store')->name('users.store');
@@ -65,3 +68,7 @@ Route::get('/categories/{id}/destroy', 'CategoryController@destroy')->name('cate
 // Route::resource('roles', 'RoleController');
 // Route::resource('permissions', 'PermissionController');
 // Route::resource('staffs', 'StaffController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

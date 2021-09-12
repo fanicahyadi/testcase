@@ -39,6 +39,7 @@
             "App\\": "app/"
         },
         "classmap": [
+            "database",
             "database/seeds",
             "database/factories"
         ]
@@ -61,5 +62,6 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
+
     }
 }
