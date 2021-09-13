@@ -26,7 +26,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', function(){
+Route::middleware('role:admin')->get('/dashboard', function(){
     return 'Dashboaard';
 })->name('dashboard');
 Route::get('/users', 'UserController@index')->name('users');
