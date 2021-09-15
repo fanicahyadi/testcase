@@ -15,7 +15,7 @@
         @endif
         <table class="table table-striped">
 
-            <a href="{{ route('staff.create') }}" class="btn btn-primary"><i class="fas fa-plus mr-1"></i>Add Data</a> &nbsp;&nbsp;
+            <a href="" class="btn btn-primary"><i class="fas fa-plus mr-1"></i>Add Data</a> &nbsp;&nbsp;
 
             <thead>
                 <tr>
@@ -31,9 +31,9 @@
                         <td>{{ $staff->id }}</td>
                         <td>{{ $staff->name }}</td>
                         <td>{{ $staff->email }}</td>
-                        <td><a href="{{ route('staffs.edit', $staffs->id) }}" class="btn btn-primary">Edit</a></td>
+                        <td><a href="{{ route('staffs.edit', $staff->id) }}" class="btn btn-primary">Edit</a></td>
                         <td>
-                            <form action="{{ route('staffs.destroy', $staffs->id) }}" method="post">
+                            <form action="{{ route('staffs.destroy', $staff->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">Delete</button>
