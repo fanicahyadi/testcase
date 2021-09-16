@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 11, 2021 at 08:51 AM
+-- Generation Time: Sep 16, 2021 at 02:59 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -164,28 +164,6 @@ CREATE TABLE `permissions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
---
-
-CREATE TABLE `roles` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `roles`
---
-
-INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'web', '2021-09-11 01:23:18', '2021-09-11 01:23:18'),
-(2, 'user', 'web', '2021-09-11 01:23:18', '2021-09-11 01:23:18');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `role_has_permissions`
 --
 
@@ -218,10 +196,10 @@ INSERT INTO `rooms` (`id`, `name`, `description`, `created_at`, `updated_at`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staffs`
+-- Table structure for table `staff`
 --
 
-CREATE TABLE `staffs` (
+CREATE TABLE `staff` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `no_hp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -230,10 +208,10 @@ CREATE TABLE `staffs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `staffs`
+-- Dumping data for table `staff`
 --
 
-INSERT INTO `staffs` (`id`, `name`, `no_hp`, `created_at`, `updated_at`) VALUES
+INSERT INTO `staff` (`id`, `name`, `no_hp`, `created_at`, `updated_at`) VALUES
 (1, 'Linda Sutomo', '08132476982', '2021-09-07 09:03:09', '2021-09-07 09:03:09');
 
 -- --------------------------------------------------------
@@ -258,7 +236,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Fani Cahyadi', 'fanicahyadi0@gmail.com', NULL, '$2y$10$aV/GB5dGU3mx0y0gu/8t2e7p.NeW8s1jMpKN1QY1sSUDUdoNsGzza', NULL, '2021-09-11 01:49:10', '2021-09-11 01:49:10');
+(1, 'Fani Cahyadi', 'fanicahyadi0@gmail.com', NULL, '$2y$10$aV/GB5dGU3mx0y0gu/8t2e7p.NeW8s1jMpKN1QY1sSUDUdoNsGzza', NULL, '2021-09-11 01:49:10', '2021-09-11 01:49:10'),
+(2, 'Admin', 'admin@role.test', NULL, '$2y$10$u/a0LdmLpCByb/XLEbNHhut.DXAIump91y576dNlRKhHhsOogKVea', NULL, '2021-09-15 18:34:02', '2021-09-15 18:34:02');
 
 --
 -- Indexes for dumped tables
@@ -318,13 +297,6 @@ ALTER TABLE `permissions`
   ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
-
---
 -- Indexes for table `role_has_permissions`
 --
 ALTER TABLE `role_has_permissions`
@@ -338,9 +310,9 @@ ALTER TABLE `rooms`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `staffs`
+-- Indexes for table `staff`
 --
-ALTER TABLE `staffs`
+ALTER TABLE `staff`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -385,28 +357,22 @@ ALTER TABLE `permissions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `staffs`
+-- AUTO_INCREMENT for table `staff`
 --
-ALTER TABLE `staffs`
+ALTER TABLE `staff`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -417,19 +383,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `model_has_permissions`
   ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `model_has_roles`
---
-ALTER TABLE `model_has_roles`
-  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `role_has_permissions`
---
-ALTER TABLE `role_has_permissions`
-  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

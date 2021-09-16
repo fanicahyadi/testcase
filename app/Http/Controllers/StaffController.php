@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Staff;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Staffs;
 
-class StaffController extends Controller
+class StaffsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +25,6 @@ class StaffController extends Controller
     public function index()
     {
         $staffs = Staff::all();
-
         return view('staff.index');
     }
 
@@ -27,7 +35,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        return view('staff.create');
     }
 
     /**
@@ -38,16 +46,22 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'no_hp' => 'required|numeric',
+        ]);
+        $show = Item::create($validatedData);
+
+        return redirect('/staffs')->with('success', 'Staffs is successfully saved');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Staff  $staff
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Staff $staff)
+    public function show($id)
     {
         //
     }
@@ -55,34 +69,44 @@ class StaffController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Staff  $staff
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Staff $staff)
+    public function edit($id)
     {
-        //
-    }
+        $staffs = Staff::findOrFail($id);
+
+        return view('staff.edit', compact('staffs'));    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Staff  $staff
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Staff $staff)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'no_hp' => 'required|numeric',
+        ]);
+        Staff::whereId($id)->update($validatedData);
+
+        return redirect('staffs')->with('success', 'Staff Data is successfully updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Staff  $staff
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Staff $staff)
+    public function destroy($id)
     {
-        //
+        $staffs = Item::findOrFail($id);
+        $staffs->delete();
+
+        return redirect('/staffs')->with('success', 'Staff Data is successfully deleted');
     }
 }

@@ -4,8 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\PermissionRegistrar;
+use App\Model\Staffs;
 
-class CreateStafsfTable extends Migration
+class CreateStaffsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,6 +30,6 @@ class CreateStafsfTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('staff');
+        Schema::dropIfExists('staffs');
     }
 }
