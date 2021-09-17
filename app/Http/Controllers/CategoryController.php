@@ -52,7 +52,9 @@ class CategoryController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255'
         ]);
-        $show = Category::create($validatedData);
+        $show = Category::create([
+            'name' => $request->name
+        ]);
 
         return redirect('/categories')->with('success', 'Category is successfully saved');
     }
@@ -93,7 +95,9 @@ class CategoryController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255'
         ]);
-        Category::whereId($id)->update($validatedData);
+        Category::whereId($id)->update([
+            'name' => $request->name
+        ]);
 
         return redirect('/categories')->with('success', 'Category Data is successfully updated');
     }

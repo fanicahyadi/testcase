@@ -55,7 +55,12 @@ class ItemController extends Controller
             'quantity' => 'required|numeric',
             'price' => 'required|numeric',
         ]);
-        $show = Item::create($validatedData);
+        $show = Item::create([
+            'name' => $request->name,
+            'category' => $request->category,
+            'quantity' => $request->quantity,
+            'price' => $request->price,
+        ]);
 
         return redirect('/items')->with('success', 'Items is successfully saved');
     }
@@ -99,7 +104,12 @@ class ItemController extends Controller
             'quantity' => 'required|numeric',
             'price' => 'required|numeric',
         ]);
-        Item::whereId($id)->update($validatedData);
+        Item::whereId($id)->update([
+            'name' => $request->name,
+            'category' => $request->category,
+            'quantity' => $request->quantity,
+            'price' => $request->price,
+        ]);
 
         return redirect('/items')->with('success', 'Item Data is successfully updated');
     }

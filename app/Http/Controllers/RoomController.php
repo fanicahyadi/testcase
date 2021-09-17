@@ -52,7 +52,10 @@ class RoomController extends Controller
             'name' => 'required|max:255',
             'description' => 'required|max:255'
         ]);
-        $show = Room::create($validatedData);
+        $show = Room::create([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
 
         return redirect('/rooms')->with('success', 'Room is successfully saved');
     }
@@ -94,7 +97,10 @@ class RoomController extends Controller
             'name' => 'required|max:255',
             'description' => 'required|max:255'
         ]);
-        Room::whereId($id)->update($validatedData);
+        Room::whereId($id)->update([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
 
         return redirect('/rooms')->with('success', 'Room Data is successfully updated');
     }

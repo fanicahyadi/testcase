@@ -21,7 +21,7 @@
                 <tr>
                     <td>ID</td>
                     <td>Name</td>
-                    <td>Email</td>
+                    <td>No HP</td>
                     <td colspan="2">Action</td>
                 </tr>
             </thead>
@@ -30,7 +30,7 @@
                     <tr>
                         <td>{{ $staff->id }}</td>
                         <td>{{ $staff->name }}</td>
-                        <td>{{ $staff->email }}</td>
+                        <td>{{ $staff->no_hp }}</td>
                         <td><a href="{{ route('staffs.edit', $staff->id) }}" class="btn btn-primary">Edit</a></td>
                         <td>
                             <form action="{{ route('staffs.destroy', $staff->id) }}" method="post">
@@ -44,4 +44,4 @@
             </tbody>
         </table>
         <div>
-        @endsection
+@endsection

@@ -23,14 +23,10 @@
             @endif
             <form method="post" action="{{ route('staffs.update', $staffs->id) }}">
                 <div class="form-group">
-                    @csrf
-                    @method('PATCH')
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" name="name" value="{{ $staffs->name }}" />
                 </div>
                 <div class="form-group">
-                    @csrf
-                    @method('PATCH')                    
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" name="email" value="{{ $staffs->name }}" />
                 </div>

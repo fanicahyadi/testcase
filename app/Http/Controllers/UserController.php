@@ -53,9 +53,12 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'email' => 'required',
         ]);
-        $show = User::create($validatedData);
+        $show = User::create([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
 
-        return redirect('/user')->with('success', 'Users is successfully saved');
+        return redirect('/users')->with('success', 'Users is successfully saved');
     }
 
     /**
@@ -92,11 +95,15 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'email' => 'required'
         ]);
-        User::whereId($id)->update($validatedData);
+        User::whereId($id)->update([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
 
-        return redirect('/user')->with('success', 'User Data is successfully updated');
+        return redirect('/users')->with('success', 'User Data is successfully updated');
     }
 
     /**
@@ -110,7 +117,7 @@ class UserController extends Controller
         $users = User::findOrFail($id);
         $users->delete();
 
-        return redirect('/user')->with('success', 'User Data is successfully deleted');
+        return redirect('/users')->with('success', 'User Data is successfully deleted');
     }
 
 }

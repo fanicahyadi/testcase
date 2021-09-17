@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Staff;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Staffs;
 
-class StaffsController extends Controller
+class StaffController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,7 +25,7 @@ class StaffsController extends Controller
     public function index()
     {
         $staffs = Staff::all();
-        return view('staff.index');
+        return view('staff.index', compact('staffs'));
     }
 
     /**
