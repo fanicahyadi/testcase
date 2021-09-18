@@ -15,7 +15,7 @@
         @endif
         <table class="table table-striped">
 
-            <a href="" class="btn btn-primary"><i class="fas fa-plus mr-1"></i>Add Data</a> &nbsp;&nbsp;
+            <a href="{{ route('staffs.create') }}" class="btn btn-primary"><i class="fas fa-plus mr-1"></i>Add Data</a> &nbsp;&nbsp;
 
             <thead>
                 <tr>

@@ -36,7 +36,7 @@ Route::post('/users/{id}/update', 'UserController@update')->name('users.update')
 Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
 Route::delete('/users/{id}/destroy', 'UserController@destroy')->name('users.destroy');
 
-Route::get('/staffs', 'StaffController@index')->name('staff');
+Route::get('/staffs', 'StaffController@index')->name('staffs');
 Route::get('/staffs/create', 'StaffController@create')->name('staffs.create');
 Route::post('/staffs/store', 'StaffController@store')->name('staffs.store');
 Route::post('/staffs/{id}/update', 'StaffController@update')->name('staffs.update');
