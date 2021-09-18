@@ -59,7 +59,7 @@ class ItemController extends Controller
             'name' => $request->name,
             'category' => $request->category,
             'quantity' => $request->quantity,
-            'price' => $request->price,
+            'price' => $request->price
         ]);
 
         return redirect('/items')->with('success', 'Items is successfully saved');
@@ -108,7 +108,7 @@ class ItemController extends Controller
             'name' => $request->name,
             'category' => $request->category,
             'quantity' => $request->quantity,
-            'price' => $request->price,
+            'price' => $request->price
         ]);
 
         return redirect('/items')->with('success', 'Item Data is successfully updated');

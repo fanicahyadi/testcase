@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 18, 2021 at 03:57 AM
+-- Generation Time: Sep 18, 2021 at 06:50 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -109,7 +109,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2021_08_24_151127_create_categories_table', 1),
 (6, '2021_08_24_151211_create_rooms_table', 1),
 (7, '2021_09_08_074859_create_permission_tables', 1),
-(8, '2021_09_15_064435_create_staffs_table', 1);
+(8, '2021_09_15_064435_create_staffs_table', 1),
+(9, '2021_09_15_064435_create_staff_table', 2);
 
 -- --------------------------------------------------------
 
@@ -196,6 +197,27 @@ INSERT INTO `rooms` (`id`, `name`, `description`, `created_at`, `updated_at`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `staff`
+--
+
+CREATE TABLE `staff` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_hp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`id`, `name`, `no_hp`, `created_at`, `updated_at`) VALUES
+(1, 'Linda Sutomo', '08132476982', '2021-09-07 09:03:09', '2021-09-07 09:03:09');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `staffs`
 --
 
@@ -206,6 +228,13 @@ CREATE TABLE `staffs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `staffs`
+--
+
+INSERT INTO `staffs` (`id`, `name`, `no_hp`, `created_at`, `updated_at`) VALUES
+(1, 'Linda Sutomo', '08132476982', '2021-09-07 09:03:09', '2021-09-07 09:03:09');
 
 -- --------------------------------------------------------
 
@@ -305,6 +334,12 @@ ALTER TABLE `rooms`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `staffs`
 --
 ALTER TABLE `staffs`
@@ -343,7 +378,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -358,10 +393,16 @@ ALTER TABLE `rooms`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `staffs`
 --
 ALTER TABLE `staffs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

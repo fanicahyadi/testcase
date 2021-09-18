@@ -48,9 +48,13 @@ class StaffController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'no_hp' => 'required|numeric',
+            'no_hp' => 'required|numeric'
         ]);
-        $show = Item::create($validatedData);
+        $show = Item::create([
+            'name' => $request->name,
+            'no_hp' => $request->no_hp
+
+        ]);
 
         return redirect('/staffs')->with('success', 'Staff is successfully saved');
     }
@@ -91,7 +95,10 @@ class StaffController extends Controller
             'name' => 'required|max:255',
             'no_hp' => 'required|numeric',
         ]);
-        Staff::whereId($id)->update($validatedData);
+        Staff::whereId($id)->update([
+            'name' => $request->name,
+            'no_hp' => $request->no_hp
+        ]);
 
         return redirect('staffs')->with('success', 'Staff Data is successfully updated');
     }
