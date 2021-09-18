@@ -32,6 +32,11 @@
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" name="email" />
                 </div>                
+                <div class="form-group">
+                    @csrf
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" name="password" />
+                </div>
                 <button type="submit" class="btn btn-primary">Add Data</button>
             </form>
         </div>

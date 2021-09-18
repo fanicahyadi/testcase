@@ -30,6 +30,10 @@
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" name="email" value="{{ $users->email }}" />
                 </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" name="password" value="{{ $users->password }}" />
+                </div>
                 <button type="submit" class="btn btn-primary">Update Data</button>
             </form>
         </div>

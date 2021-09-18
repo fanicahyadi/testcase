@@ -52,13 +52,15 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
+            'password' => bcrypt()
         ]);
         $show = User::create([
             'name' => $request->name,
-            'email' => $request->email
+            'email' => $request->email,
+            'password' => bcrypt()
         ]);
 
-        return redirect('/users')->with('success', 'Users is successfully saved');
+        return redirect('/users')->with('success', 'User is successfully saved');
     }
 
     /**
@@ -96,11 +98,13 @@ class UserController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required'
+            'email' => 'required',
+            'password' => bcrypt('12345678')
         ]);
         User::whereId($id)->update([
             'name' => $request->name,
-            'email' => $request->email
+            'email' => $request->email,
+            'password' => bcrypt('12345678')
         ]);
 
         return redirect('/users')->with('success', 'User Data is successfully updated');

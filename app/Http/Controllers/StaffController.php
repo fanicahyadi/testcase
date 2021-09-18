@@ -52,7 +52,7 @@ class StaffController extends Controller
         ]);
         $show = Item::create($validatedData);
 
-        return redirect('/staffs')->with('success', 'Staffs is successfully saved');
+        return redirect('/staffs')->with('success', 'Staff is successfully saved');
     }
 
     /**

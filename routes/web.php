@@ -60,10 +60,12 @@ Route::delete('/rooms/{id}/destroy', 'RoomController@destroy')->name('rooms.dest
 Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/categories/create', 'CategoryController@create')->name('categories.create');
 Route::post('/categories/store', 'CategoryController@store')->name('categories.store');
-Route::post('/categories{id}//update', 'CAtegoryController@update')->name('categories.update');
+Route::post('/categories{id}//update', 'CategoryController@update')->name('categories.update');
 Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('categories.edit');
 Route::delete('/categories/{id}/destroy', 'CategoryController@destroy')->name('categories.destroy');
 
+Route::resource('roles', 'RoleController');
+Route::resource('permissions', 'PermissionController');
 
 // // CRUD
 // Route::resource('items', 'ItemController');
@@ -72,7 +74,3 @@ Route::delete('/categories/{id}/destroy', 'CategoryController@destroy')->name('c
 // Route::resource('roles', 'RoleController');
 // Route::resource('permissions', 'PermissionController');
 // Route::resource('staffs', 'StaffController');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

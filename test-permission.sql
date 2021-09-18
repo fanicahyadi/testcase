@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 16, 2021 at 02:59 AM
+-- Generation Time: Sep 18, 2021 at 03:57 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -108,8 +108,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2021_08_24_151038_create_items_table', 1),
 (5, '2021_08_24_151127_create_categories_table', 1),
 (6, '2021_08_24_151211_create_rooms_table', 1),
-(7, '2021_08_24_151328_create_staffs_table', 1),
-(8, '2021_09_08_074859_create_permission_tables', 1);
+(7, '2021_09_08_074859_create_permission_tables', 1),
+(8, '2021_09_15_064435_create_staffs_table', 1);
 
 -- --------------------------------------------------------
 
@@ -196,23 +196,16 @@ INSERT INTO `rooms` (`id`, `name`, `description`, `created_at`, `updated_at`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staff`
+-- Table structure for table `staffs`
 --
 
-CREATE TABLE `staff` (
+CREATE TABLE `staffs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `no_hp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`id`, `name`, `no_hp`, `created_at`, `updated_at`) VALUES
-(1, 'Linda Sutomo', '08132476982', '2021-09-07 09:03:09', '2021-09-07 09:03:09');
 
 -- --------------------------------------------------------
 
@@ -237,7 +230,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Fani Cahyadi', 'fanicahyadi0@gmail.com', NULL, '$2y$10$aV/GB5dGU3mx0y0gu/8t2e7p.NeW8s1jMpKN1QY1sSUDUdoNsGzza', NULL, '2021-09-11 01:49:10', '2021-09-11 01:49:10'),
-(2, 'Admin', 'admin@role.test', NULL, '$2y$10$u/a0LdmLpCByb/XLEbNHhut.DXAIump91y576dNlRKhHhsOogKVea', NULL, '2021-09-15 18:34:02', '2021-09-15 18:34:02');
+(2, 'Admin', 'admin@role.test', NULL, '$2y$10$u/a0LdmLpCByb/XLEbNHhut.DXAIump91y576dNlRKhHhsOogKVea', NULL, '2021-09-15 18:34:02', '2021-09-15 18:34:02'),
+(3, 'User', 'user@role.test', NULL, '$2y$10$n2JfJHksbqN/fdN2HFaET.istdnKrRMd/Vb5YCab8/jlpvgeqYuSe', NULL, '2021-09-15 23:58:37', '2021-09-15 23:58:37'),
+(4, 'Caroline Hartono', 'caroline_hartono@gmail.com', NULL, '$2y$10$1Km4VoZG1727LsXDXtcVZ.i1v6Jn6oCAcoLlF80LQqpPJ9cKpyzTG', NULL, '2021-09-16 00:10:19', '2021-09-16 00:10:19');
 
 --
 -- Indexes for dumped tables
@@ -310,9 +305,9 @@ ALTER TABLE `rooms`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `staff`
+-- Indexes for table `staffs`
 --
-ALTER TABLE `staff`
+ALTER TABLE `staffs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -363,16 +358,16 @@ ALTER TABLE `rooms`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `staff`
+-- AUTO_INCREMENT for table `staffs`
 --
-ALTER TABLE `staff`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `staffs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

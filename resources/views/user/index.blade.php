@@ -22,6 +22,7 @@
                     <td>ID</td>
                     <td>Name</td>
                     <td>Email</td>
+                    <td>Password</td>
                     <td colspan="2">Action</td>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->password }}</td>
                         <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Edit</a></td>
                         <td>
                             <form action="{{ route('users.destroy', $user->id) }}" method="post">

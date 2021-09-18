@@ -23,7 +23,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        //    
     }
 
     /**
