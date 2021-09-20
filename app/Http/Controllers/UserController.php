@@ -99,12 +99,12 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt()
         ]);
         User::whereId($id)->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt('12345678')
+            'password' => bcrypt()
         ]);
 
         return redirect('/users')->with('success', 'User Data is successfully updated');
