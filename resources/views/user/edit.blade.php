@@ -9,7 +9,7 @@
     </style>
     <div class="card uper">
         <div class="card-header">
-            Edit Item Data
+            Edit User Data
         </div>
         <div class="card-body">
             @if ($errors->any())
