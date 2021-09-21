@@ -23,6 +23,7 @@
             @endif
             <form method="post" action="{{ route('categories.update', $categories->id) }}">
                 <div class="form-group">
+                    @csrf
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" name="name" value="{{ $categories->name }}" />
                 </div>

@@ -23,12 +23,14 @@
             @endif
             <form method="post" action="{{ route('staffs.update', $staffs->id) }}">
                 <div class="form-group">
+                    @csrf
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" name="name" value="{{ $staffs->name }}" />
                 </div>
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" name="email" value="{{ $staffs->name }}" />
+                    @csrf
+                    <label for="no_hp">No HP:</label>
+                    <input type="number" class="form-control" name="no_hp" value="{{ $staffs->no_hp }}" />
                 </div>
                 <button type="submit" class="btn btn-primary">Update Data</button>
             </form>

@@ -24,11 +24,11 @@
             <form method="post" action="{{ route('rooms.update', $rooms->id) }}">
                 <div class="form-group">
                     @csrf
-                    @method('PATCH')
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" name="name" value="{{ $rooms->name }}" />
                 </div>
                 <div class="form-group">
+                    @csrf
                     <label for="description">Description :</label>
                     <textarea rows="5" columns="5" class="form-control"
                         name="description">{{ $rooms->description }}</textarea>

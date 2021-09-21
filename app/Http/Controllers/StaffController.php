@@ -50,7 +50,7 @@ class StaffController extends Controller
             'name' => 'required|max:255',
             'no_hp' => 'required|numeric'
         ]);
-        $show = Item::create([
+        $show = Staff::create([
             'name' => $request->name,
             'no_hp' => $request->no_hp
 
@@ -111,7 +111,7 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
-        $staffs = Item::findOrFail($id);
+        $staffs = Staff::findOrFail($id);
         $staffs->delete();
 
         return redirect('/staffs')->with('success', 'Staff Data is successfully deleted');

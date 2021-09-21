@@ -24,19 +24,21 @@
             <form method="post" action="{{ route('items.update', $items->id) }}">
                 <div class="form-group">
                     @csrf
-                    @method('PATCH')
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" name="name" value="{{ $items->name }}" />
                 </div>
                 <div class="form-group">
+                    @csrf
                     <label for="category">Category :</label>
                     <textarea rows="5" columns="5" class="form-control" name="category">{{ $items->category }}</textarea>
                 </div>
                 <div class="form-group">
+                    @csrf
                     <label for="quantity">Quantity :</label>
                     <input type="number" class="form-control" name="quantity" value="{{ $items->quantity }}" />
                 </div>
                 <div class="form-group">
+                    @csrf
                     <label for="price">Price :</label>
                     <input type="text" class="form-control" name="price" value="{{ $items->price }}" />
                 </div>
