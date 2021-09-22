@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\Category;
+use App\Rooms;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -38,7 +40,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('item.create');
+        $category = Category::all(); 
+        return view('item.create', compact('category'));
     }
 
     /**

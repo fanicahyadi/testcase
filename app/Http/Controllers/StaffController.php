@@ -80,7 +80,8 @@ class StaffController extends Controller
     {
         $staffs = Staff::findOrFail($id);
 
-        return view('staff.edit', compact('staffs'));    }
+        return view('staff.edit', compact('staffs'));
+    }
 
     /**
      * Update the specified resource in storage.

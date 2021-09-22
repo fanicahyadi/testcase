@@ -28,7 +28,11 @@
           </div>
           <div class="form-group">
               <label for="category">Category :</label>
-              <textarea rows="5" columns="5" class="form-control" name="category"></textarea>
+              <select class="form-control" name="category">
+                @foreach ($category as $item)
+                    <option value="{{ $item->id }}"> {{ $item->name }} </option>                 
+                @endforeach
+              </select>
           </div>
           <div class="form-group">
             <label for="room">Rooms :</label>

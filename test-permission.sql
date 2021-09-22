@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 18, 2021 at 06:50 AM
+-- Generation Time: Sep 22, 2021 at 01:57 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -148,6 +148,13 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('fanicahyadi0@gmail.com', '$2y$10$QrmoY2ogowTNvjiHG.g9Su912MpPnOJJ.TKe29ducqqQ2WKpmv9ym', '2021-09-19 21:04:07');
+
 -- --------------------------------------------------------
 
 --
@@ -161,6 +168,18 @@ CREATE TABLE `permissions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) NOT NULL,
+  `created_at` timestamp NOT NULL,
+  `updated_at` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -213,7 +232,7 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `name`, `no_hp`, `created_at`, `updated_at`) VALUES
-(1, 'Linda Sutomo', '08132476982', '2021-09-07 09:03:09', '2021-09-07 09:03:09');
+(1, 'Linda Sutomo', '08132476983', '2021-09-07 09:03:09', '2021-09-20 22:49:13');
 
 -- --------------------------------------------------------
 
@@ -258,10 +277,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Fani Cahyadi', 'fanicahyadi0@gmail.com', NULL, '$2y$10$aV/GB5dGU3mx0y0gu/8t2e7p.NeW8s1jMpKN1QY1sSUDUdoNsGzza', NULL, '2021-09-11 01:49:10', '2021-09-11 01:49:10'),
-(2, 'Admin', 'admin@role.test', NULL, '$2y$10$u/a0LdmLpCByb/XLEbNHhut.DXAIump91y576dNlRKhHhsOogKVea', NULL, '2021-09-15 18:34:02', '2021-09-15 18:34:02'),
-(3, 'User', 'user@role.test', NULL, '$2y$10$n2JfJHksbqN/fdN2HFaET.istdnKrRMd/Vb5YCab8/jlpvgeqYuSe', NULL, '2021-09-15 23:58:37', '2021-09-15 23:58:37'),
-(4, 'Caroline Hartono', 'caroline_hartono@gmail.com', NULL, '$2y$10$1Km4VoZG1727LsXDXtcVZ.i1v6Jn6oCAcoLlF80LQqpPJ9cKpyzTG', NULL, '2021-09-16 00:10:19', '2021-09-16 00:10:19');
+(1, 'Fani Cahyadi', 'fanicahyadi0@gmail.com', NULL, '$2y$10$dM1SOr.c8aufs7YubmVGV.b5xWlVTD3UH8tih9V9emqzcfHqVFrmG', NULL, '2021-09-05 21:10:04', '2021-09-05 21:10:04'),
+(2, 'Admin', 'admin@role.test', NULL, '$2y$10$ZIsP2FqARRibt0rfPKiEq.WBBn5q39dNqJbyvBFGSHRxCcmJhhoAi', NULL, '2021-09-19 21:12:47', '2021-09-19 21:12:47'),
+(3, 'User', 'user@role.test', NULL, '$2y$10$UEjQYArU4BRdRzpypbNn../6lQDelR5yH2EoqEA2tpty.sVverazO', NULL, '2021-09-19 21:14:08', '2021-09-19 21:14:08'),
+(4, 'Caroline Hartono', 'caroline_hartono@gmail.com', NULL, '$2y$10$8Z/VPVorTMjRdkV9yIfh/uAECOARVW/Sf5CoTjpMSJpQotPNugkkm', NULL, '2021-09-20 18:49:04', '2021-09-20 18:49:04');
 
 --
 -- Indexes for dumped tables
@@ -319,6 +338,12 @@ ALTER TABLE `password_resets`
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `role_has_permissions`
@@ -385,6 +410,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `permissions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rooms`

@@ -58,7 +58,7 @@ class UserController extends Controller
         $show = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request['password']),
+            'password' => Hash::make($request['password'])
         ]);
 
         return redirect('/users')->with('success', 'User is successfully saved');
@@ -105,7 +105,7 @@ class UserController extends Controller
         User::whereId($id)->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request['password']),
+            'password' => Hash::make($request['password'])
         ]);
 
         return redirect('/users')->with('success', 'User Data is successfully updated');
