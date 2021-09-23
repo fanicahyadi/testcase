@@ -109,8 +109,16 @@ class UserController extends Controller
         ]);
 
         return redirect('/users')->with('success', 'User Data is successfully updated');
+    
+        $confrim = ([
+            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'min:6'
+        ]);
+    
+        $this->validate($request, $confrim);
+        
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *

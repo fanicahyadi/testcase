@@ -36,6 +36,26 @@
                     @csrf
                     <label for="password">Password:</label>
                     <input type="password" class="form-control" name="password" value="{{ $users->password }}" />
+
+                    <input type="hidden" name="method" value="PUT" class="form-control"/>
+                        <label>New Password:</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder="Enter New Password"
+                                name="password_new"
+                                autoFocus />
+                    <div class={(resetpassword.errors && resetpassword.errors.password_new) ?>
+                    </div>
+        
+                        <label >Password Confirm:</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder="Enter Password Confirmation"
+                                name="password_confirmation" />
+                    <div class={(resetpassword.errors && resetpassword.errors.password_confirmation) ?>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Update Data</button>
             </form>
