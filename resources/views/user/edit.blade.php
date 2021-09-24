@@ -48,7 +48,7 @@
                     <div class={(resetpassword.errors && resetpassword.errors.password_new) ?>
                     </div>
         
-                        <label >Password Confirm:</label>
+                        <label>Password Confirm:</label>
                             <input
                                 type="password"
                                 className="form-control"
