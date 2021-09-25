@@ -32,32 +32,26 @@
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" name="email" value="{{ $users->email }}" />
                 </div>
-                <div class="form-group">
-                    @csrf
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" name="password" value="{{ $users->password }}" />
+            @if (count($errors))
+                @foreach ($errors->all() as $error)
+                  <p class="alert alert-danger">{{$error}}</p>
+                @endforeach
+            @endif    
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="first-name" class="form-control"  placeholder="Enter old password" name="password" value="{{ $users->password }}" /> 
+                    </div>
 
-                    <input type="hidden" name="method" value="PUT" class="form-control"/>
-                        <label>New Password:</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                placeholder="Enter New Password"
-                                name="password_new"
-                                autoFocus />
-                    <div class={(resetpassword.errors && resetpassword.errors.password_new) ?>
+                    <div class="form-group">
+                        <label for="newpassword">New Password:</label>
+                        <input type="password" id="first-name" class="form-control" placeholder="Enter new password" name="newpassword"> 
                     </div>
-        
-                        <label>Password Confirm:</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                placeholder="Enter Password Confirmation"
-                                name="password_confirmation" />
-                    <div class={(resetpassword.errors && resetpassword.errors.password_confirmation) ?>
+
+                    <div class="form-group">
+                        <label for="password_confirmation">Password Confirmation:</label>
+                        <input type="password" id="first-name"  class="form-control" placeholder="Enter password confirmation"  name="password_confirmation"> 
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Update Data</button>
+              <button type="submit" class="btn btn-primary">Update Data</button>
             </form>
         </div>
     </div>
