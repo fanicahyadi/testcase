@@ -108,7 +108,6 @@ class SettingsController extends Controller
                session()->flash('message','old password doesnt matched ');
                return redirect()->back();
              }
- 
        }
  
     /**
