@@ -100,7 +100,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
         User::whereId($id)->update([
             'name' => $request->name,
@@ -116,6 +116,7 @@ class UserController extends Controller
         ]);
     
         $this->validate($request, $confrim);
+       
         
     }
     

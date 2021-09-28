@@ -21,22 +21,26 @@
       </div><br />
     @endif
       <form method="post" action="{{ route('items.store') }}">
+        @csrf
           <div class="form-group">
-              @csrf
               <label for="name">Name:</label>
               <input type="text" class="form-control" name="name"/>
           </div>
           <div class="form-group">
-              <label for="category">Category :</label>
-              <select class="form-control" name="category">
+              <label for="category">Category:</label>
+              <select class="form-control" name="category_id">
                 @foreach ($category as $item)
                     <option value="{{ $item->id }}"> {{ $item->name }} </option>                 
                 @endforeach
               </select>
           </div>
           <div class="form-group">
-            <label for="room">Rooms :</label>
-            <textarea rows="5" columns="5" class="form-control" name="room"></textarea>
+            <label for="rooms">Room:</label>
+            <select class="form-control" name="room_id"> 
+              @foreach ($rooms as $item)
+                  <option value="{{ $item->id }}"> {{ $item->name }} </option>                 
+              @endforeach
+            </select>
         </div>
           <div class="form-group">
               <label for="quantity">Quantity :</label>

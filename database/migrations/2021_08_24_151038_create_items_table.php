@@ -17,8 +17,6 @@ class CreateItemsTable extends Migration
             $table->id();
             $table-> bigInteger('category_id');
             $table-> bigInteger('room_id');
-            $table->string('name');
-            $table->string('category');
             $table->string('quantity');
             $table->string('price');
             $table->timestamps();

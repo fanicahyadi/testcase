@@ -12,11 +12,12 @@ class Item extends Model
 
     public function category()
     {
-        return $this->hasMany(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function room()
     {
         return $this->belongsTo(Room::class);
     }
+
 }

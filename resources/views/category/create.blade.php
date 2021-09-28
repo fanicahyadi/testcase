@@ -21,13 +21,18 @@
                     </ul>
                 </div><br />
             @endif
-            <form method="post" action="{{ route('categories.store') }}">
-                <div class="form-group">
-                    @csrf
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" name="name" />
-                </div>
-                <button type="submit" class="btn btn-primary">Add Data</button>
+        <form method="post" action="{{ route('categories.store') }}">
+            <div class="form-group">
+                @csrf
+                <label for="name">Name Category:</label>
+                <input type="text" class="form-control" name="name" />
+            </div>
+            <div class="form-group">
+                @csrf
+                <label for="slug">Slug:</label>
+                <input type="text" class="form-control" name="slug" />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Data</button>
             </form>
         </div>
     </div>

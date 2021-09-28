@@ -1,19 +1,16 @@
 <?php
 
 namespace App;
-
-use App\Room;
-use App\Category;
+use App\Item;
 use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
     protected $guarded = ['id'];
 
-    public function category()
+    public function item()
     {
-        return $this->hasMany(Category::class, 'category_id', 'id');
-    }    
-
+        return $this->hasMany(Item::class);
+    }  
    
 }

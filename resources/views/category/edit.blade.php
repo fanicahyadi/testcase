@@ -24,8 +24,13 @@
             <form method="post" action="{{ route('categories.update', $categories->id) }}">
                 <div class="form-group">
                     @csrf
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" name="name" value="{{ $categories->name }}" />
+                    <label for="name">Name Category:</label>
+                    <input type="text" class="form-control" name="name" value="{{ $categories->name }}"/>
+                </div>
+                <div class="form-group">
+                    @csrf
+                    <label for="slug">Slug:</label>
+                    <input type="text" class="form-control" name="slug" value="{{ $categories->slug }}"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Update Data</button>
             </form>

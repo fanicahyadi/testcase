@@ -21,6 +21,7 @@
                 <tr>
                     <td>ID</td>
                     <td>Name</td>
+                    <td>Slug</td>
                     <td colspan="2">Action</td>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                     <tr>
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
+                        <td>{{ $category->slug }}</td>
                         <td><a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary">Edit</a></td>
                         <td>
                             <form action="{{ route('categories.destroy', $category->id) }}" method="post">

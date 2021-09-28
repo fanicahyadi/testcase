@@ -21,8 +21,8 @@
                 <tr>
                     <td>ID</td>
                     <td>Name</td>
-                    <td>Catgories</td>
-                    <td>Rooms</td>
+                    <td>Category_id</td>
+                    <td>Room_id</td>
                     <td>Quantity</td>
                     <td>Price</td>
                     <td colspan="2">Action</td>
@@ -33,10 +33,8 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->category}}</td>
-                        <td>
-                            {{ $item->room->name ?? '' }}
-                         </td>
+                        <td>{{ $item->category_id}}</td>
+                        <td>{{ $item->room_id }}</td>
                         <td>{{ $item->quantity }}</td>
                         <td>{{ $item->price }}</td>
                         <td><a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary">Edit</a></td>

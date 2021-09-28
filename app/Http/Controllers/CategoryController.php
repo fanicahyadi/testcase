@@ -50,10 +50,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'slug' => 'required'
         ]);
         $show = Category::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'slug' => $request->slug
         ]);
 
         return redirect('/categories')->with('success', 'Category is successfully saved');
@@ -93,10 +95,12 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'slug' => 'required'
         ]);
         Category::whereId($id)->update([
-            'name' => $request->name
+            'name' => $request->name,
+            'slug' => $request->slug
         ]);
 
         return redirect('/categories')->with('success', 'Category Data is successfully updated');

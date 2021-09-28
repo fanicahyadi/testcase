@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\Category;
-use App\Rooms;
+use App\Room;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -41,7 +41,8 @@ class ItemController extends Controller
     public function create()
     {
         $category = Category::all(); 
-        return view('item.create', compact('category'));
+        $rooms = Room::all();
+        return view('item.create', compact('category', 'rooms'));
     }
 
     /**
@@ -54,13 +55,15 @@ class ItemController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'category' => 'required',
+            'category_id' => 'required',
+            'room_id' => 'required',
             'quantity' => 'required|numeric',
             'price' => 'required|numeric',
         ]);
         $show = Item::create([
             'name' => $request->name,
-            'category' => $request->category,
+            'category_id' => $request->category_id,
+            'room_id' => $request->room_id,
             'quantity' => $request->quantity,
             'price' => $request->price
         ]);
@@ -109,7 +112,8 @@ class ItemController extends Controller
         ]);
         Item::whereId($id)->update([
             'name' => $request->name,
-            'category' => $request->category,
+            'category_id' => $request->category_id,
+            'room_id' => $request->room_id,
             'quantity' => $request->quantity,
             'price' => $request->price
         ]);
