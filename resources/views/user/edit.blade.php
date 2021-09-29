@@ -38,16 +38,19 @@
                 @endforeach
             @endif    
                     <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="first-name" class="form-control"  placeholder="Enter old password" name="password" value="{{ $users->password }}" /> 
+                    @csrf
+                    <label for="oldpassword">Password:</label>
+                    <input type="password" id="first-name" class="form-control"  placeholder="Enter old password" name="oldpassword"> 
                     </div>
 
                     <div class="form-group">
+                        @csrf
                         <label for="newpassword">New Password:</label>
                         <input type="password" id="first-name" class="form-control" placeholder="Enter new password" name="newpassword"> 
                     </div>
 
                     <div class="form-group">
+                        @csrf
                         <label for="password_confirmation">Password Confirmation:</label>
                         <input type="password" id="first-name"  class="form-control" placeholder="Enter password confirmation"  name="password_confirmation"> 
                     </div>

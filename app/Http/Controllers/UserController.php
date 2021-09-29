@@ -86,6 +86,10 @@ class UserController extends Controller
         $users = User::findOrFail($id);
 
         return view('user.edit', compact('users'));
+
+        $users = admin::find(Auth::user()->id);
+
+        return view('backend.user.updatepassword',compact('users'));
     }
 
     /**
@@ -100,24 +104,45 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
-            'password' => 'required',
         ]);
         User::whereId($id)->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request['password'])
         ]);
 
         return redirect('/users')->with('success', 'User Data is successfully updated');
-    
-        $confrim = ([
-            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
-            'password_confirmation' => 'min:6'
-        ]);
-    
-        $this->validate($request, $confrim);
-       
-        
+  
+        $this->validate($request, [
+ 
+            'password' => 'required',
+            'newpassword' => 'required',
+            ]);
+
+        $hashedPassword = Auth::user()->password;
+ 
+        if (\Hash::check($request->oldpassword , $hashedPassword )) {
+  
+             if (!\Hash::check($request->newpassword , $hashedPassword)) {
+     
+                 $users =admin::find(Auth::user()->id);
+                 $users->password = bcrypt($request->newpassword);
+                 admin::where( 'id' , Auth::user()->id)->update( array( 'password' =>  $users->password));
+     
+                 session()->flash('message','password updated successfully');
+                 return redirect()->back();
+             }
+     
+                 else{
+                     session()->flash('message','new password can not be the old password!');
+                     return redirect()->back();
+                     }
+     
+         }
+  
+           else{
+                session()->flash('message','old password doesnt matched ');
+                return redirect()->back();
+              }
     }
     
     /**
