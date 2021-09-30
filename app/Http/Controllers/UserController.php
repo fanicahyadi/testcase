@@ -104,19 +104,10 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
-        ]);
-        User::whereId($id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
-
-        return redirect('/users')->with('success', 'User Data is successfully updated');
-  
-        $this->validate($request, [
- 
             'password' => 'required',
             'newpassword' => 'required',
-            ]);
+            'password_confrim' => 'required_with:password|same:password'
+        ]);
 
         $hashedPassword = Auth::user()->password;
  
@@ -124,25 +115,33 @@ class UserController extends Controller
   
              if (!\Hash::check($request->newpassword , $hashedPassword)) {
      
-                 $users =admin::find(Auth::user()->id);
+                 $users = user::find(Auth::user()->id);
                  $users->password = bcrypt($request->newpassword);
-                 admin::where( 'id' , Auth::user()->id)->update( array( 'password' =>  $users->password));
+                 user::where( 'id' , Auth::user()->id)->update( array( 'password' =>  $users->password));
      
-                 session()->flash('message','password updated successfully');
+                 session()->flash('message','User password updated successfully updated');
                  return redirect()->back();
              }
      
                  else{
-                     session()->flash('message','new password can not be the old password!');
+                     session()->flash('message','User new password can not be the old password!');
                      return redirect()->back();
                      }
-     
          }
   
            else{
-                session()->flash('message','old password doesnt matched ');
+                session()->flash('message','User old password doesnt matched');
                 return redirect()->back();
               }
+
+              User::whereId($id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+            ]);
+    
+        return redirect('/users')->with('success', 'User Data is successfully updated');
+
     }
     
     /**

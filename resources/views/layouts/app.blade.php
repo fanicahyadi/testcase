@@ -40,6 +40,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/staffs">Staff</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/role">Role</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/permission">Permission</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

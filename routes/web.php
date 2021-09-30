@@ -41,6 +41,20 @@ Route::post('/staffs/{id}/update', 'StaffController@update')->name('staffs.updat
 Route::get('/staffs/{id}/edit', 'StaffController@edit')->name('staffs.edit');
 Route::delete('/staffs/{id}/destroy', 'StaffController@destroy')->name('staffs.destroy');
 
+Route::get('/role', 'RoleController@index')->name('role');
+Route::get('/role/create', 'RoleController@create')->name('role.create');
+Route::post('/role/store', 'RoleController@store')->name('role.store');
+Route::post('/role/{id}/update', 'RoleController@update')->name('role.update');
+Route::get('/role/{id}/edit', 'RoleController@edit')->name('role.edit');
+Route::delete('/role/{id}/destroy', 'RoleControllerController@destroy')->name('role.destroy');
+
+Route::get('/permission', 'PermissionController@index')->name('permission');
+Route::get('/permission/create', 'PermissionController@create')->name('permission.create');
+Route::post('/permission/store', 'PermissionController@store')->name('permission.store');
+Route::post('/permission/{id}/update', 'PermissionController@update')->name('permission.update');
+Route::get('/permission/{id}/edit', 'PermissionController@edit')->name('permission.edit');
+Route::delete('/permission/{id}/destroy', 'PermissionController@destroy')->name('permission.destroy');
+
 Route::get('/items', 'ItemController@index')->name('items');
 Route::get('/items/create', 'ItemController@create')->name('items.create');
 Route::post('/items/store', 'ItemController@store')->name('items.store');
