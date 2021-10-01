@@ -106,7 +106,8 @@ class ItemController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'category' => 'required',
+            'category_id' => 'required',
+            'room_id' => 'required',
             'quantity' => 'required|numeric',
             'price' => 'required|numeric',
         ]);

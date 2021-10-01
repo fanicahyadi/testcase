@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,7 +25,9 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        $permissions = Permission::all();
+
+        return view('permission.index', compact('permissions'));
     }
 
     /**
@@ -34,7 +37,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('permissions.create');
     }
 
     /**
@@ -45,7 +48,16 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'guard_name' => 'required',
+        ]);
+        $show = Permission::create([
+            'name' => $request->name,
+            'guard_name' => $request->guard_name,
+        ]);
+
+        return redirect('/permissions')->with('success', 'Permission is successfully saved'); 
     }
 
     /**
@@ -67,7 +79,10 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permissions = Permission::findOrFail($id);
+
+        return view('permission.edit', compact('permissions'));
+
     }
 
     /**
@@ -79,8 +94,17 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'item' => 'required',
+        ]);
+        Permission::whereId($id)->update([
+            'name' => $request->name,
+            'item' => $request->item,
+        ]);
+
+        return redirect('/permissions')->with('success', 'Permission Data is successfully updated');
+     }
 
     /**
      * Remove the specified resource from storage.
@@ -90,6 +114,9 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $permissions = Permission::findOrFail($id);
+        $permissions->delete();
+
+        return redirect('/permissions')->with('success', 'Permission Data is successfully deleted');
     }
 }

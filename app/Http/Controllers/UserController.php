@@ -104,19 +104,21 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
-            'password' => 'required',
+            'oldpassword' => 'required',
             'newpassword' => 'required',
             'password_confrim' => 'required_with:password|same:password'
         ]);
 
-        $hashedPassword = Auth::user()->password;
- 
+        $users = User::find($id);
+        $hashedPassword = $users-> password;
+
         if (\Hash::check($request->oldpassword , $hashedPassword )) {
   
              if (!\Hash::check($request->newpassword , $hashedPassword)) {
      
-                 $users = user::find(Auth::user()->id);
                  $users->password = bcrypt($request->newpassword);
+                 $users->save();
+
                  user::where( 'id' , Auth::user()->id)->update( array( 'password' =>  $users->password));
      
                  session()->flash('message','User password updated successfully updated');
@@ -133,12 +135,6 @@ class UserController extends Controller
                 session()->flash('message','User old password doesnt matched');
                 return redirect()->back();
               }
-
-              User::whereId($id)->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => $request->password,
-            ]);
     
         return redirect('/users')->with('success', 'User Data is successfully updated');
 

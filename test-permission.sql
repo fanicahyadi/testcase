@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 22, 2021 at 01:57 AM
+-- Generation Time: Oct 01, 2021 at 02:22 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -41,7 +41,8 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Laptop', 'laptop', '2021-09-06 06:23:53', '2021-09-06 06:23:53'),
-(2, 'Komputer', 'komputer', '2021-09-06 06:23:54', '2021-09-06 06:23:54');
+(2, 'Komputer', 'komputer', '2021-09-06 06:23:54', '2021-09-06 06:23:54'),
+(3, 'Meja', 'meja', '2021-09-27 20:07:13', '2021-09-27 20:07:13');
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,6 @@ CREATE TABLE `items` (
   `category_id` bigint(20) NOT NULL,
   `room_id` bigint(20) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -80,10 +80,11 @@ CREATE TABLE `items` (
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`id`, `category_id`, `room_id`, `name`, `category`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Laptop HP', 'Laptop', '100', '1500000', '2021-09-06 08:30:19', '2021-09-06 08:30:19'),
-(2, 1, 1, 'Laptop LG', 'Laptop', '50', '1210000', '2021-09-06 06:16:02', '2021-09-06 06:16:02'),
-(3, 2, 1, 'Kompter Samsung', 'Komputer', '35', '2250000', '2021-09-06 06:16:02', '2021-09-06 06:16:02');
+INSERT INTO `items` (`id`, `category_id`, `room_id`, `name`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Laptop HP', '100', '1500000', '2021-09-06 08:30:19', '2021-09-06 08:30:19'),
+(2, 1, 1, 'Laptop LG', '50', '1210000', '2021-09-06 06:16:02', '2021-09-27 18:35:24'),
+(3, 2, 1, 'Kompter Samsung', '35', '2250000', '2021-09-06 06:16:02', '2021-09-06 06:16:02'),
+(4, 3, 1, 'Meja Kantor', '25', '10000000', '2021-09-27 21:48:03', '2021-09-27 21:48:03');
 
 -- --------------------------------------------------------
 
@@ -153,6 +154,7 @@ CREATE TABLE `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('fanicahyadi0@gmail.com', '$2y$10$QrmoY2ogowTNvjiHG.g9Su912MpPnOJJ.TKe29ducqqQ2WKpmv9ym', '2021-09-19 21:04:07'),
 ('fanicahyadi0@gmail.com', '$2y$10$QrmoY2ogowTNvjiHG.g9Su912MpPnOJJ.TKe29ducqqQ2WKpmv9ym', '2021-09-19 21:04:07');
 
 -- --------------------------------------------------------
@@ -277,10 +279,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Fani Cahyadi', 'fanicahyadi0@gmail.com', NULL, '$2y$10$dM1SOr.c8aufs7YubmVGV.b5xWlVTD3UH8tih9V9emqzcfHqVFrmG', NULL, '2021-09-05 21:10:04', '2021-09-05 21:10:04'),
+(1, 'Fani Cahyadi', 'fanicahyadi0@gmail.com', NULL, '$2y$10$dM1SOr.c8aufs7YubmVGV.b5xWlVTD3UH8tih9V9emqzcfHqVFrmG', NULL, '2021-09-05 21:10:04', '2021-09-28 18:48:07'),
 (2, 'Admin', 'admin@role.test', NULL, '$2y$10$ZIsP2FqARRibt0rfPKiEq.WBBn5q39dNqJbyvBFGSHRxCcmJhhoAi', NULL, '2021-09-19 21:12:47', '2021-09-19 21:12:47'),
-(3, 'User', 'user@role.test', NULL, '$2y$10$UEjQYArU4BRdRzpypbNn../6lQDelR5yH2EoqEA2tpty.sVverazO', NULL, '2021-09-19 21:14:08', '2021-09-19 21:14:08'),
-(4, 'Caroline Hartono', 'caroline_hartono@gmail.com', NULL, '$2y$10$8Z/VPVorTMjRdkV9yIfh/uAECOARVW/Sf5CoTjpMSJpQotPNugkkm', NULL, '2021-09-20 18:49:04', '2021-09-20 18:49:04');
+(3, 'User', 'user@role.test', NULL, '$2y$10$UEjQYArU4BRdRzpypbNn../6lQDelR5yH2EoqEA2tpty.sVverazO', NULL, '2021-09-19 21:14:08', '2021-09-28 23:51:53'),
+(4, 'Caroline Hartono', 'caroline_hartono@gmail.com', NULL, '$2y$10$/bsufxeMfOcmpLi3CKP1OOzifqIy8/wtbGPtNYIBkpmtsJdbwnFvS', NULL, '2021-09-04 01:33:01', '2021-09-04 01:33:01');
 
 --
 -- Indexes for dumped tables
@@ -385,7 +387,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -397,7 +399,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`

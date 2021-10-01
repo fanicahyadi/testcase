@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Role;
 
 class RoleController extends Controller
 {
@@ -23,7 +24,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //    
+        $role = Role::all();
+
+        return view('role.index', compact('role'));
     }
 
     /**
@@ -33,7 +36,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('role.create');
     }
 
     /**
@@ -44,7 +47,16 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'item' => 'required',
+        ]);
+        $show = Permission::create([
+            'name' => $request->name,
+            'item' => $request->item,
+        ]);
+
+        return redirect('/role')->with('success', 'Role is successfully saved');
     }
 
     /**
@@ -66,7 +78,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::findOrFail($id);
+
+        return view('role.edit', compact('role'));
     }
 
     /**
@@ -78,7 +92,16 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required'
+        ]);
+        Role::whereId($id)->update([
+            'name' => $request->name,
+            'slug' => $request->slug
+        ]);
+
+        return redirect('/role')->with('success', 'Role Data is successfully updated');
     }
 
     /**
@@ -89,6 +112,9 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        $role->delete();
+
+        return redirect('/role')->with('success', 'Role Data is successfully deleted');
     }
 }

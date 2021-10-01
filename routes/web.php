@@ -7,6 +7,8 @@ use App\Model\Rooms;
 use App\Model\Category;
 use App\Model\Users;
 use App\Model\Staff;
+use App\Model\Permission;
+use App\Model\Roles;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,19 +43,19 @@ Route::post('/staffs/{id}/update', 'StaffController@update')->name('staffs.updat
 Route::get('/staffs/{id}/edit', 'StaffController@edit')->name('staffs.edit');
 Route::delete('/staffs/{id}/destroy', 'StaffController@destroy')->name('staffs.destroy');
 
-Route::get('/role', 'RoleController@index')->name('role');
-Route::get('/role/create', 'RoleController@create')->name('role.create');
-Route::post('/role/store', 'RoleController@store')->name('role.store');
-Route::post('/role/{id}/update', 'RoleController@update')->name('role.update');
-Route::get('/role/{id}/edit', 'RoleController@edit')->name('role.edit');
-Route::delete('/role/{id}/destroy', 'RoleControllerController@destroy')->name('role.destroy');
+Route::get('/roles', 'RoleController@index')->name('roles');
+Route::get('/roles/create', 'RoleController@create')->name('roles.create');
+Route::post('/roles/store', 'RoleController@store')->name('roles.store');
+Route::post('/roles/{id}/update', 'RoleController@update')->name('roles.update');
+Route::get('/roles/{id}/edit', 'RoleController@edit')->name('roles.edit');
+Route::delete('/roles/{id}/destroy', 'RoleControllerController@destroy')->name('roles.destroy');
 
-Route::get('/permission', 'PermissionController@index')->name('permission');
-Route::get('/permission/create', 'PermissionController@create')->name('permission.create');
-Route::post('/permission/store', 'PermissionController@store')->name('permission.store');
-Route::post('/permission/{id}/update', 'PermissionController@update')->name('permission.update');
-Route::get('/permission/{id}/edit', 'PermissionController@edit')->name('permission.edit');
-Route::delete('/permission/{id}/destroy', 'PermissionController@destroy')->name('permission.destroy');
+Route::get('/permissions', 'PermissionController@index')->name('permissions');
+Route::get('/permissions/create', 'PermissionController@create')->name('permissions.create');
+Route::post('/permissions/store', 'PermissionController@store')->name('permissions.store');
+Route::post('/permissions/{id}/update', 'PermissionController@update')->name('permissions.update');
+Route::get('/permissions/{id}/edit', 'PermissionController@edit')->name('permissions.edit');
+Route::delete('/permissions/{id}/destroy', 'PermissionController@destroy')->name('permissions.destroy');
 
 Route::get('/items', 'ItemController@index')->name('items');
 Route::get('/items/create', 'ItemController@create')->name('items.create');
