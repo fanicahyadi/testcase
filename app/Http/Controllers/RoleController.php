@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-use App\Role;
 
 class RoleController extends Controller
 {
@@ -26,7 +26,7 @@ class RoleController extends Controller
     {
         $role = Role::all();
 
-        return view('role.index', compact('role'));
+        return view('role.index', compact('roles'));
     }
 
     /**
@@ -51,12 +51,13 @@ class RoleController extends Controller
             'name' => 'required|max:255',
             'item' => 'required',
         ]);
-        $show = Permission::create([
+        
+        $show = Role::create([
             'name' => $request->name,
             'item' => $request->item,
         ]);
 
-        return redirect('/role')->with('success', 'Role is successfully saved');
+        return redirect('/roles')->with('success', 'Role is successfully saved');
     }
 
     /**
@@ -80,7 +81,7 @@ class RoleController extends Controller
     {
         $role = Role::findOrFail($id);
 
-        return view('role.edit', compact('role'));
+        return view('role.edit', compact('roles'));
     }
 
     /**
@@ -101,7 +102,7 @@ class RoleController extends Controller
             'slug' => $request->slug
         ]);
 
-        return redirect('/role')->with('success', 'Role Data is successfully updated');
+        return redirect('/roles')->with('success', 'Role Data is successfully updated');
     }
 
     /**
@@ -115,6 +116,6 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $role->delete();
 
-        return redirect('/role')->with('success', 'Role Data is successfully deleted');
+        return redirect('/roles')->with('success', 'Role Data is successfully deleted');
     }
 }

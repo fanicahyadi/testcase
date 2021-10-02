@@ -109,7 +109,7 @@ class UserController extends Controller
             'password_confrim' => 'required_with:password|same:password'
         ]);
 
-        $users = User::find($id);
+        $users = User::findall($id);
         $hashedPassword = $users-> password;
 
         if (\Hash::check($request->oldpassword , $hashedPassword )) {
@@ -129,8 +129,7 @@ class UserController extends Controller
                      session()->flash('message','User new password can not be the old password!');
                      return redirect()->back();
                      }
-         }
-  
+        }
            else{
                 session()->flash('message','User old password doesnt matched');
                 return redirect()->back();
