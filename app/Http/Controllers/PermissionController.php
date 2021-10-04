@@ -50,11 +50,11 @@ class PermissionController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'guard_name' => 'required',
+            'guard_name' => 'required'
         ]);
-        $show = Permission::create([
-            'name' => $request->name,
-            'guard_name' => $request->guard_name,
+        $permission = Permission::create([
+            'name' => 'permission',
+            'guard_name' => 'permission'
         ]);
 
         return redirect('/permissions')->with('success', 'Permission is successfully saved'); 

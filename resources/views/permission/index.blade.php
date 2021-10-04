@@ -21,7 +21,7 @@
                 <tr>
                     <td>ID</td>
                     <td>Name</td>
-                    <td>Slug</td>
+                    <td>Guard Name</td>
                     <td colspan="2">Action</td>
                 </tr>
             </thead>
@@ -30,7 +30,7 @@
                     <tr>
                         <td>{{ $permission->id }}</td>
                         <td>{{ $permission->name }}</td>
-                        <td>{{ $permission->slug }}</td>
+                        <td>{{ $permission->guard_name }}</td>
                         <td><a href="{{ route('permission.edit', $permission->id) }}" class="btn btn-primary">Edit</a></td>
                         <td>
                             <form action="{{ route('permission.destroy', $permission->id) }}" method="post">

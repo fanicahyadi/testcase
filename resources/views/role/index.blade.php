@@ -21,7 +21,7 @@
                 <tr>
                     <td>ID</td>
                     <td>Name</td>
-                    <td>Slug</td>
+                    <td>Gruad Name</td>
                     <td colspan="2">Action</td>
                 </tr>
             </thead>
@@ -30,7 +30,7 @@
                     <tr>
                         <td>{{ $role->id }}</td>
                         <td>{{ $role->name }}</td>
-                        <td>{{ $role->slug }}</td>
+                        <td>{{ $role->guard_name }}</td>
                         <td><a href="{{ route('role.edit', $role->id) }}" class="btn btn-primary">Edit</a></td>
                         <td>
                             <form action="{{ route('role.destroy', $role->id) }}" method="post">

@@ -49,12 +49,11 @@ class RoleController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'item' => 'required',
+            'item' => 'required'
         ]);
-        
-        $show = Role::create([
-            'name' => $request->name,
-            'item' => $request->item,
+        $role = Role::create([
+            'name' => 'role',
+            'guard_name' => 'role'
         ]);
 
         return redirect('/roles')->with('success', 'Role is successfully saved');
@@ -97,6 +96,7 @@ class RoleController extends Controller
             'name' => 'required|max:255',
             'slug' => 'required'
         ]);
+
         Role::whereId($id)->update([
             'name' => $request->name,
             'slug' => $request->slug

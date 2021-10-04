@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 01, 2021 at 02:22 AM
+-- Generation Time: Oct 02, 2021 at 07:35 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -174,18 +174,6 @@ CREATE TABLE `permissions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
---
-
-CREATE TABLE `roles` (
-  `id` bigint(20) NOT NULL,
-  `created_at` timestamp NOT NULL,
-  `updated_at` timestamp NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `role_has_permissions`
 --
 
@@ -279,7 +267,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Fani Cahyadi', 'fanicahyadi0@gmail.com', NULL, '$2y$10$dM1SOr.c8aufs7YubmVGV.b5xWlVTD3UH8tih9V9emqzcfHqVFrmG', NULL, '2021-09-05 21:10:04', '2021-09-28 18:48:07'),
+(1, 'Fani Cahyadi', 'fanicahyadi0@gmail.com', NULL, '$2y$10$dM1SOr.c8aufs7YubmVGV.b5xWlVTD3UH8tih9V9emqzcfHqVFrmG', NULL, '2021-09-05 21:10:04', '2021-10-01 01:25:05'),
 (2, 'Admin', 'admin@role.test', NULL, '$2y$10$ZIsP2FqARRibt0rfPKiEq.WBBn5q39dNqJbyvBFGSHRxCcmJhhoAi', NULL, '2021-09-19 21:12:47', '2021-09-19 21:12:47'),
 (3, 'User', 'user@role.test', NULL, '$2y$10$UEjQYArU4BRdRzpypbNn../6lQDelR5yH2EoqEA2tpty.sVverazO', NULL, '2021-09-19 21:14:08', '2021-09-28 23:51:53'),
 (4, 'Caroline Hartono', 'caroline_hartono@gmail.com', NULL, '$2y$10$/bsufxeMfOcmpLi3CKP1OOzifqIy8/wtbGPtNYIBkpmtsJdbwnFvS', NULL, '2021-09-04 01:33:01', '2021-09-04 01:33:01');
@@ -340,12 +328,6 @@ ALTER TABLE `password_resets`
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `role_has_permissions`
@@ -412,12 +394,6 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `permissions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rooms`
