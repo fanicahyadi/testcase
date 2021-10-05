@@ -53,7 +53,7 @@ class RoleController extends Controller
         ]);
         $role = Role::create([
             'name' => 'role',
-            'guard_name' => 'role'
+            'guard_name' => 'role controller'
         ]);
 
         return redirect('/roles')->with('success', 'Role is successfully saved');
