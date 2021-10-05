@@ -54,7 +54,7 @@ class PermissionController extends Controller
         ]);
         $permission = Permission::create([
             'name' => 'permission',
-            'guard_name' => 'permission'
+            'guard_name' => 'permission controller'
         ]);
 
         return redirect('/permissions')->with('success', 'Permission is successfully saved'); 
