@@ -14,15 +14,15 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        Role::create([
-            'name' => 'admin',
-            'guard_name' => 'web'
-        ]);
+        // Role::create([
+        //     'name' => 'admin',
+        //     'guard_name' => 'web'
+        // ]);
 
-        Role::create([
-            'name' => 'user',
-            'guard_name' => 'web'
-        ]);
+        // Role::create([
+        //     'name' => 'user',
+        //     'guard_name' => 'web'
+        // ]);
 
         $admin = User::create([
             'name' => 'Admin Role',

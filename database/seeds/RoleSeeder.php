@@ -22,5 +22,11 @@ class RoleSeeder extends Seeder
             'name' => 'user',
             'guard_name' => 'web'
         ]);
+        
+        $admin = User::create([
+            'name' => 'Admin Role',
+            'email' => 'admin@role.test',
+            'password' => bcrypt('12345678')
+        ]);
     }
 }
